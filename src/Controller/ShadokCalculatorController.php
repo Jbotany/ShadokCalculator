@@ -19,10 +19,16 @@ class ShadokCalculatorController extends AbstractController
         $shadokCalculator = new ShadokCalculator();
 
         $form = $this->createForm(ShadokCalculatorType::class, $shadokCalculator);
+        $form->handleRequest($request);
 
-        return $this->render('shadok_calculator/index.html.twig', [
-            'controller_name' => 'ShadokCalculatorController',
-            'form' => $form->createView()
+        if ($form->isSubmitted() && $form->isValid()) {
+            $formData = $form->getData();
+
+            dump($formData->getHumanNumber());
+        }
+
+        return $this->renderForm('shadok_calculator/index.html.twig', [
+            'form' => $form
         ]);
     }
 }
