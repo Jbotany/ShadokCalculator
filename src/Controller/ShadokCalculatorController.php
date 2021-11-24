@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\ShadokCalculator;
 use App\Form\ShadokCalculatorType;
+use App\Service\ShadokCalculatorService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +25,7 @@ class ShadokCalculatorController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $formData = $form->getData();
 
-            dump($formData->getHumanNumber());
+            dump(ShadokCalculatorService::calculateShadokNumberFromHumanNumber($formData->getHumanNumber()));
         }
 
         return $this->renderForm('shadok_calculator/index.html.twig', [
