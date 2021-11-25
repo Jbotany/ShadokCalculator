@@ -33,7 +33,7 @@ class ShadokCalculatorController extends AbstractController
      */
     public function transcodeNumberToHumanOrShadok(Request $request): JsonResponse
     {
-        return new JsonResponse(ShadokCalculatorService::calculateShadokNumberFromHumanNumber(
+        return new JsonResponse(ShadokCalculatorService::humanNumberToShadokNumber(
             $request->get('shadok_calculator')['humanNumber'])
         );
     }

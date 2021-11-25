@@ -6,7 +6,7 @@ use App\Enum\ShadokSyllablesEnum;
 
 class ShadokCalculatorService
 {
-    public static function calculateShadokNumberFromHumanNumber(string $humanNumber): string
+    public static function humanNumberToShadokNumber(string $humanNumber): string
     {
         $shadokNumber = '';
         $base4Number = base_convert((string) $humanNumber, 10, 4);
